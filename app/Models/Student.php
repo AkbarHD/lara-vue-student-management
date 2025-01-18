@@ -11,12 +11,14 @@ class Student extends Model
 
     protected $fillable = ['name', 'email', 'class_id', 'section_id'];
 
+    protected $with = ['class', 'section']; // Eager loading (baru tau ini)
+
     public function section()
     {
         return $this->belongsTo(Section::class);
     }
 
-    public function classes()
+    public function class()
     {
         return $this->belongsTo(Classes::class, 'class_id');
     }
